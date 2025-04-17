@@ -1,155 +1,168 @@
+# 🧾 Certificate Generator – Python GUI Tool
 
-# 🧾 Certificate Generator GUI App
-
-A modern and intuitive GUI application to **automatically generate personalized certificates** from a CSV file and a certificate template image.
-
-This app is perfect for:
-- 🏫 Schools and colleges
-- 🏆 Event organizers
-- 🧑‍🏫 Trainers and educators
-- 🧑‍💻 Hackathon or coding event teams
-
-Built using Python and `customtkinter`, it provides a sleek UI with real-time progress updates and customizable input/output options.
+A modern, GUI-based Python certificate generator that takes user data from a CSV file and produces customized certificates using a given template image. Designed for event organizers, academic institutions, clubs, and professional bodies who need to generate certificates in bulk — quickly and beautifully.
 
 ---
 
-## 🚀 Features
+## 🌟 Features
 
-- 📄 Input via CSV (name list)
-- 🖼️ Custom PNG template support
-- 💾 Select output folder for generated certificates
-- 🌗 Light and dark theme friendly
-- 📈 Real-time progress bar
-- 👁️ Sample output preview
-- 🛠️ Easy to use interface
-- ✅ Built with `customtkinter`, `PIL`, and `pandas`
-
----
-
-## 🖼️ App Screenshots
-
-| Initial Screen (Before Generation) | Final Screen (After Generation) |
-|-----------------------------------|----------------------------------|
-| ![UI Input](assets/ui_input.png)  | ![UI Output](assets/ui_output.png) |
-
-> 📝 Rename and place your images:
-> - `Screenshot from 2025-04-17 17-05-58.png` → `assets/ui_input.png`
-> - `Screenshot from 2025-04-17 17-05-26.png` → `assets/ui_output.png`
+- ✅ User-friendly GUI interface
+- 🖼️ Template-based certificate generation
+- 📥 CSV-based bulk input support
+- ✍️ Signature-style font support
+- 🎨 Font color selection (Black / White)
+- 🧪 Live sample output generation
+- 📊 Progress bar for generation status
+- ⚡ One-click silent launch via desktop shortcut (Windows only)
 
 ---
 
-## 📁 Project Structure
+## 📁 File Structure
 
 ```
-CertificateGenerator/
+Certificate-Generator/
 │
-├── assets/
-│   ├── ui_input.png            # Input screen screenshot
-│   └── ui_output.png           # Output screen screenshot
+├── main.py              # Main GUI logic
+├── run.vbs              # Silent launcher for Windows
+├── run.bat              # Alternate batch launcher
+├── icon.ico             # Application icon
+├── package.txt          # Python dependency list
 │
-├── templates/
-│   └── sample.png              # Sample certificate template
+├── fonts/
+│   └── Photograph Signature.ttf
 │
-├── sample.csv                  # Sample CSV with names
-├── main.py                     # Main Python GUI script
-├── requirements.txt            # Dependencies
-└── README.md                   # You're reading it!
+├── template/
+│   └── sampleoutput.png
+│
+└── docs/
+    └── img/
+        ├── before_run.png
+        ├── after_run.png
+        ├── csv_example.png
+        └── sample_certificate.png
 ```
 
 ---
 
-## 🧰 Installation
+## 🖼️ Screenshot Previews
 
-### 🔗 Step 1: Clone the Repository
+| Before Launch | After Certificate Generation |
+|---------------|------------------------------|
+| ![Before Run](docs/img/before_run.png) | ![After Run](docs/img/after_run.png) |
 
+| Sample CSV | Sample Output |
+|------------|---------------|
+| ![CSV](docs/img/csv_example.png) | ![Certificate](docs/img/sample_certificate.png) |
+
+> 📸 *Screenshots should be placed inside `docs/img/` with the specified names to show previews in your documentation.*
+
+---
+
+## 📦 Installation (Windows)
+
+### 1. Install Python
+- Download Python 3.8+ from [python.org](https://www.python.org/downloads/)
+- ✅ Make sure to check **“Add Python to PATH”** during installation
+
+### 2. Install Dependencies
+Navigate to the project folder and run:
 ```bash
-git clone https://github.com/your-username/certificate-generator.git
-cd certificate-generator
+pip install -r package.txt
 ```
 
-### 📦 Step 2: Install Required Libraries
+### 3. Prepare Font & Template
+- Make sure `Photograph Signature.ttf` is in the `fonts/` folder
+- The certificate **template image must be a `.png` file** of size **1123 x 794 pixels** (A4 @ 96 DPI)
+- Replace `template/sampleoutput.png` with your custom design or edit the existing one
 
-```bash
-pip install -r requirements.txt
-```
-
-> ✅ Tested with **Python 3.9+**
+### 4. Optional (Silent Launch Setup)
+- Right-click on `run.vbs` → `Send to` → `Desktop (create shortcut)`
+- Now you can launch the tool without seeing a terminal window
 
 ---
 
-## 📋 How to Use
+## ▶️ Running the Application
 
-### Step 1: Prepare Your CSV File
+### 💼 Preferred Way (Silent)
+Double-click the **desktop shortcut** to `run.vbs` for clean launch experience.
 
-Your CSV must have the following structure:
-
-```csv
-Name
-Rakesh Kundu
-Tina Sharma
-Alex Roy
-```
-
-> Make sure the column header is `Name` (case-sensitive).
-
----
-
-### Step 2: Choose a Template Image
-
-Use a **.png** image as the certificate template. The app will place the name text at a predefined location on the image.
-
----
-
-### Step 3: Run the App
-
+### 🐍 Alternate Way (Command Line)
 ```bash
 python main.py
 ```
 
-### Step 4: In the App GUI
+---
 
-1. Click **Browse** next to **CSV File** → select your `.csv` file.
-2. Click **Browse** next to **Template File** → select your `.png` certificate template.
-3. Click **Browse** next to **Output Folder** → choose the folder where you want to save the certificates.
-4. Click **Generate Certificates** → Watch the progress bar fill up!
-5. Optionally, click **Sample Output** to preview a sample certificate.
+## 📄 CSV Format & Instructions
+
+Your input CSV file should contain **exactly** the following **case-sensitive** column names:
+
+| NAME          | ID     | FOLDER    |
+|---------------|--------|-----------|
+| Rakesh Kundu  | 1001   | ECE       |
+| Alice Johnson |        | HR        |
+| John Doe      | 1055   |           |
+
+- `NAME` – required, case-sensitive  
+- `ID` – optional  
+- `FOLDER` – optional  
+- If `FOLDER` is specified, generated certificates will be saved inside that subfolder
+
+> ⚠️ **Column headers must be in uppercase as shown: `NAME`, `ID`, `FOLDER`**
 
 ---
 
-## 📤 Output
+## 🧪 Sample Output Button
 
-Each certificate will be saved in the selected output folder with the recipient's name in the filename, for example:
+Use the **“Sample Output”** button before generating certificates to preview the layout and font styling.
 
-```
-Certificates/
-├── Rakesh Kundu.png
-├── Tina Sharma.png
-└── Alex Roy.png
-```
+- Sample Name: `Rakesh Kundu`
+- ID: `Sample`
+- Folder: `SampleOutput`
 
 ---
 
-## 📚 Documentation & Help
+## 🖼️ Template Requirements
 
-- 📘 **Docs**: This README serves as the complete guide.
-- 🌐 **Connect**: [GitHub - Rakesh Kundu (Pinaka)](https://github.com/rax-2)
+- Supported format: `.png`
+- Required resolution: **1123 x 794 pixels**
+- Edit the default template export in `Sample output` using any image editor (e.g., Photoshop, Canva, Figma, GIMP)
 
----
-
-## 👨‍💻 About the Creator
-
-**Developed by:** Rakesh Kundu  
-🎓 ECE Student @ Abacus Institute of Engineering and Management  
-💡 Founder of YantraYodha Hardware & Coding Club
+For best results:
+- Use high-quality fonts
+- Place placeholders in areas with enough space
+- Avoid crowding near the name area
 
 ---
 
-## 🧾 License
+## 💾 Output Files
 
-This project is licensed under the [MIT License](LICENSE).
+- Saved in PNG format: `Name_ID_Certificate.png` or `Name_Certificate.png`
+- Saved to the current working directory or folder specified in `FOLDER` column
+- Clean file naming avoids overwriting existing files
 
 ---
 
-## 📌 Version
+## 💡 Tips & Best Practices
 
-**v1.0.0** – Initial release with all core features.
+- Use high-resolution certificate designs for clarity
+- Test with a few entries before generating in bulk
+- Avoid using special characters in folder names
+- Keep backup of your template before editing
+- Confirm CSV column headers are correctly typed
+
+---
+
+## 👨‍💻 Developed By
+
+**Rakesh Kundu**  
+📂 [GitHub - rax-2](https://github.com/rax-2)  
+🌐 [Portfolio Website](https://trishul-a.github.io/portfolio)
+
+---
+
+## 📜 License
+
+This project is open-source and free to use under the MIT License. Contributions are welcome!
+
+---
